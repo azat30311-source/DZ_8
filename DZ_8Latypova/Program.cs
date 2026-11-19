@@ -5,21 +5,21 @@ namespace DZ_8Latypova
     {
         private static void Main()
         {
-            Customer customer = new Customer("Иван Иванов", Post.Customer);
-            TeamLeader leader = new TeamLeader("Анна Смирнова", Post.TeamLeader);
+            Customer customer = new Customer("Кира Хонда", Post.Customer);
+            TeamLeader leader = new TeamLeader("Дамир Трегулов", Post.TeamLeader);
 
             List<Executor> team = new List<Executor>
             {
-                new Executor("Алексей"),
-                new Executor("Мария"),
-                new Executor("Дмитрий"),
-                new Executor("Ольга"),
-                new Executor("Сергей"),
-                new Executor("Елена"),
-                new Executor("Никита"),
-                new Executor("Татьяна"),
-                new Executor("Павел"),
-                new Executor("Юлия")
+                new Executor("Егор"),
+                new Executor("Джон"),
+                new Executor("Данил"),
+                new Executor("Светлана"),
+                new Executor("Ифраим"),
+                new Executor("Ибрагим"),
+                new Executor("Нейт"),
+                new Executor("Тейт"),
+                new Executor("Василий"),
+                new Executor("Виктория")
             };
 
             Project project = customer.CreateProject("Автоматизация складов", DateTime.Now.AddMonths(4));
@@ -41,15 +41,14 @@ namespace DZ_8Latypova
 
             leader.StartProject(project);
 
-            // Назначаем задачи 10 разработчикам
             for (int i = 0; i < team.Count; i++)
             {
                 leader.GiveTask(tasks[i], team[i]);
             }
 
-            // Симуляция работы команды
-            team[0].DelegateTask(tasks[0], team[1]); // Алексей делегирует Марии
-            team[2].RejectTask(tasks[2]);           // Сергей отклоняет задачу
+
+            team[0].DelegateTask(tasks[0], team[1]); // Егор делегирует Джону
+            team[2].RejectTask(tasks[2]);           // Данил отклоняет задачу
             leader.GiveTask(tasks[2], team[2]);      // Тимлид переназначает её обратно
 
             foreach (var task in project.Tasks)
